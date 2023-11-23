@@ -33,19 +33,24 @@ $(document).ready(function () {
   //grabs values from time and value divs and saves them to local storage
   $(".saveBtn").click(function (event) {
     event.preventDefault();
-    let value = $(this).siblings(".time-block").val();
+    let value = $(this).siblings(".description").val();
     let time = $(this).parent().attr("id").split("-")[1];
     localStorage.setItem(time, value);
-    console.log()
+  
+  //Display save message in Jumbotron
+  $("#saveMessage").text("Task has been saved!");
+
+    // Logging the value to console
+    console.log(value); 
   });
 
   //retrieves items from local storage and sets them in proper places
-  $("#hour-09 .time-block").val(localStorage.getItem("09"));
-  $("#hour-10 .time-block").val(localStorage.getItem("10"));
-  $("#hour-11 .time-block").val(localStorage.getItem("11"));
-  $("#hour-12 .time-block").val(localStorage.getItem("12"));
-  $("#hour-13 .time-block").val(localStorage.getItem("13"));
-  $("#hour-14 .time-block").val(localStorage.getItem("14"));
-  $("#hour-15 .time-block").val(localStorage.getItem("15"));
-  $("#hour-16 .time-block").val(localStorage.getItem("16"));
-  $("#hour-17 .time-block").val(localStorage.getItem("17"));
+  $("#hour-09 .description").val(localStorage.getItem("09"));
+  $("#hour-10 .description").val(localStorage.getItem("10"));
+  $("#hour-11 .description").val(localStorage.getItem("11"));
+  $("#hour-12 .description").val(localStorage.getItem("12"));
+  $("#hour-13 .description").val(localStorage.getItem("13"));
+  $("#hour-14 .description").val(localStorage.getItem("14"));
+  $("#hour-15 .description").val(localStorage.getItem("15"));
+  $("#hour-16 .description").val(localStorage.getItem("16"));
+  $("#hour-17 .description").val(localStorage.getItem("17"));
