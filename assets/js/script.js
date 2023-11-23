@@ -1,5 +1,5 @@
-  //Timer and Date displayed using dayjs
-  let timerInterval = setInterval(function () {
+//Timer and Date displayed using dayjs
+let timerInterval = setInterval(function () {
 
   let update = dayjs();
   $('#date').text(update.format('MMMM D, YYYY'));
@@ -9,7 +9,7 @@
 //Ensures that the script will only run once the page Document Object Model (DOM) is ready for JavaScript code to execute
 $(document).ready(function () {
   // List of IDs
-  let ids = ['hour-9', 'hour-10', 'hour-11', 'hour-12', 'hour-13', 'hour-14', 'hour-15', 'hour-16', 'hour-17'];
+  let ids = ['hour-09', 'hour-10', 'hour-11', 'hour-12', 'hour-13', 'hour-14', 'hour-15', 'hour-16', 'hour-17'];
 
   // Get the current dayJS hour
   let dayjsHour = dayjs().hour();
@@ -30,27 +30,31 @@ $(document).ready(function () {
   });
 });
 
-  //grabs values from time and value divs and saves them to local storage
-  $(".saveBtn").click(function (event) {
-    event.preventDefault();
-    let value = $(this).siblings(".description").val();
-    let time = $(this).parent().attr("id").split("-")[1];
-    localStorage.setItem(time, value);
-  
+//grabs values from time and value divs and saves them to local storage
+$(".saveBtn").click(function (event) {
+  event.preventDefault();
+  let value = $(this).siblings(".description").val();
+  let time = $(this).parent().attr("id").split("-")[1];
+  localStorage.setItem(time, value);
+  console.log("hello")
   //Display save message in Jumbotron
-  $("#saveMessage").text("Task has been saved!");
+  $("#saveMessage").text("Task has been saved!✔️");
+  // Clear the message after a short delay
+  setTimeout(function () {
+    $("#saveMessage").text("");
+  }, 2000);
 
-    // Logging the value to console
-    console.log(value); 
-  });
+  // Logging the value to console
+  console.log(value);
+});
 
-  //retrieves items from local storage and sets them in proper places
-  $("#hour-09 .description").val(localStorage.getItem("09"));
-  $("#hour-10 .description").val(localStorage.getItem("10"));
-  $("#hour-11 .description").val(localStorage.getItem("11"));
-  $("#hour-12 .description").val(localStorage.getItem("12"));
-  $("#hour-13 .description").val(localStorage.getItem("13"));
-  $("#hour-14 .description").val(localStorage.getItem("14"));
-  $("#hour-15 .description").val(localStorage.getItem("15"));
-  $("#hour-16 .description").val(localStorage.getItem("16"));
-  $("#hour-17 .description").val(localStorage.getItem("17"));
+//retrieves items from local storage and sets them in proper places
+$("#hour-09 .description").val(localStorage.getItem("09"));
+$("#hour-10 .description").val(localStorage.getItem("10"));
+$("#hour-11 .description").val(localStorage.getItem("11"));
+$("#hour-12 .description").val(localStorage.getItem("12"));
+$("#hour-13 .description").val(localStorage.getItem("13"));
+$("#hour-14 .description").val(localStorage.getItem("14"));
+$("#hour-15 .description").val(localStorage.getItem("15"));
+$("#hour-16 .description").val(localStorage.getItem("16"));
+$("#hour-17 .description").val(localStorage.getItem("17"));
