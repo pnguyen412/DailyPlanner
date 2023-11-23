@@ -14,13 +14,22 @@ $(document).ready(function () {
 
   //grabs hour from each time slot and compares it to actual time
   $.each(function () {
+   //get current dayjs hour value
     let dayjsHour = dayjs().hour();
-    let hourIDs=['hour-9'.splice("hour-")]
     
-    if (dayjsHour == hourIDs) {
+    let ids=['hour-9','hour-10','hour-11','hour-12','hour-13','hour-14','hour-15','hour-16','hour-17'];
+    ids.forEach(function(id){
+      let element = document.getElementById(id);
+      let hourNumber= parseInt(id.split('-')[1]);
+      console.log('Original ID:', id);
+      console.log('Number:', hourNumber);
+      
+    // figure out a way to get just the number in the id so that it can be
+    // compared to the dayjshour value
+    if (dayjsHour == hourNumber) {
       $(this).addClass("present");
       $(this).children(".description").addClass("white-text");
-    } else if (currentHour < timeDiv) {
+    } else if (currentHour < hour) {
       $(this).removeClass("present");
       $(this).addClass("future");
     } else if (currentHour > timeDiv) {
@@ -35,6 +44,7 @@ $(document).ready(function () {
     var value = $(this).siblings(".time-block").val();
     var time = $(this).parent().attr("id").split("-")[1];
     localStorage.setItem(time, value);
+    console.log()
   });
 
   //retrieves items from local storage and sets them in proper places
@@ -47,4 +57,5 @@ $(document).ready(function () {
   $("#hour-15 .time-block").val(localStorage.getItem("15"));
   $("#hour-16 .time-block").val(localStorage.getItem("16"));
   $("#hour-17 .time-block").val(localStorage.getItem("17"));
-});
+})
+})
